@@ -40,7 +40,7 @@ const{name,email,dob,age,location,picture,phone}=user;
 useEffect(()=>{
 getUser()
 },[])
-    return(<main>
+    return(<main>s
         <div className="block bcg-orange">
           <img src={cwSvg} alt="cw" id="cw" />
         </div>
@@ -53,7 +53,10 @@ getUser()
               <button className="icon" data-label="name" onMouseOver={handleOnMouseOver}>
                 <img src={womanSvg} alt="user" id="iconImg" />
               </button>
-              <button className="icon" data-label="email" onMouseOver={()=>setUserTitle("email")}>
+              <button className="icon" data-label="email" onMouseOver={()=>{
+                setUserValue(user.email)
+                return setUserTitle("email")
+              }}>
                 <img src={mailSvg} alt="mail" id="iconImg" />
               </button>
               <button className="icon" data-label="age"onMouseOver={()=>setUserTitle("age")}>
