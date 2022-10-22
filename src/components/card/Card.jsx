@@ -9,6 +9,7 @@ import padlockSvg from "../../assets/padlock.svg";
 import cwSvg from "../../assets/cw.svg";
 import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
+import Button from "../button/Button";
 const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
 const url = "https://randomuser.me/api/";
@@ -19,6 +20,8 @@ const url = "https://randomuser.me/api/";
 const Card=()=>{
 
 const[user,setUser]=useState("")
+const [userTitle,setUserTitle]=useState("")
+const [userValue,setUserValue]=useState("")
 
 const getUser=()=>{
     fetch(url).then((res)=>res.json()).then((data)=>setUser(data.results[0]))
@@ -36,37 +39,30 @@ getUser()
         </div>
         <div className="block">
           <div className="container">
-            <img src={picture?.large} alt="random user" className="user-img" />
-            <p className="user-title">My ... is</p>
-            <p className="user-value"></p>
+            <img src={picture?.large} alt="random user" className="user-img"  />
+            <p className="user-title">My {userTitle} is</p>
+            <p className="user-value">Eyüp</p>
             <div className="values-list">
-              <button className="icon" data-label="name">
+              <button className="icon" data-label="name" onMouseOver={()=>setUserTitle("name")}>
                 <img src={womanSvg} alt="user" id="iconImg" />
               </button>
-              <button className="icon" data-label="email">
+              <button className="icon" data-label="email" onMouseOver={()=>setUserTitle("email")}>
                 <img src={mailSvg} alt="mail" id="iconImg" />
               </button>
-              <button className="icon" data-label="age">
+              <button className="icon" data-label="age"onMouseOver={()=>setUserTitle("age")}>
                 <img src={womanAgeSvg} alt="age" id="iconImg" />
               </button>
-              <button className="icon" data-label="street">
+              <button className="icon" data-label="street" onMouseOver={()=>setUserTitle("street")}>
                 <img src={mapSvg} alt="map" id="iconImg" />
               </button>
-              <button className="icon" data-label="phone">
+              <button className="icon" data-label="phone"onMouseOver={()=>setUserTitle("phone")}>
                 <img src={phoneSvg} alt="phone" id="iconImg" />
               </button>
-              <button className="icon" data-label="password">
+              <button className="icon" data-label="password" onMouseOver={()=>setUserTitle("password")}>
                 <img src={padlockSvg} alt="lock" id="iconImg" />
               </button>
             </div>
-            <div className="btn-group">
-              <button className="btn" type="button">
-                new user
-              </button>
-              <button className="btn" type="button">
-                add user
-              </button>
-            </div>
+            <Button getUser={getUser}/>
   
             <table className="table">
               <thead>
