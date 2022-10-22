@@ -27,6 +27,13 @@ const getUser=()=>{
     fetch(url).then((res)=>res.json()).then((data)=>setUser(data.results[0]))
      
 }
+
+const handleOnMouseOver=(e)=>{
+setUserTitle("name")
+setUserValue(user.name.first)
+
+}
+
 console.log(user);
 const{name,email,dob,age,location,picture,phone}=user;
 
@@ -41,9 +48,9 @@ getUser()
           <div className="container">
             <img src={picture?.large} alt="random user" className="user-img"  />
             <p className="user-title">My {userTitle} is</p>
-            <p className="user-value">Eyüp</p>
+            <p className="user-value">{userValue}</p>
             <div className="values-list">
-              <button className="icon" data-label="name" onMouseOver={()=>setUserTitle("name")}>
+              <button className="icon" data-label="name" onMouseOver={handleOnMouseOver}>
                 <img src={womanSvg} alt="user" id="iconImg" />
               </button>
               <button className="icon" data-label="email" onMouseOver={()=>setUserTitle("email")}>
