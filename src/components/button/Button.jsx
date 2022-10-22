@@ -1,7 +1,8 @@
 const Button=({getUser})=>{
   const fetchNewUser=()=>{
-    console.log("buton clicked")
+    // console.log("buton clicked")
     getUser()
+ 
   }
     return(
         <div className="btn-group">
