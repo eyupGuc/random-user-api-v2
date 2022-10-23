@@ -31,7 +31,7 @@ const Card = () => {
   };
 
   console.log(user);
-  const { name, email, dob, age, location, picture, phone } = user;
+  const { name, email, dob, age, location, picture, phone,gender } = user;
 
   useEffect(() => {
     getUser();
@@ -53,7 +53,7 @@ const Card = () => {
               data-label="name"
               onMouseOver={handleOnMouseOver}
             >
-              <img src={womanSvg} alt="user" id="iconImg" />
+              <img src={gender==="male" ? manSvg : womanSvg} alt="user" id="iconImg" />
             </button>
             <button
               className="icon"
@@ -69,7 +69,7 @@ const Card = () => {
               data-label="age"
               onMouseOver={() => setUserTitle("age")}
             >
-              <img src={womanAgeSvg} alt="age" id="iconImg" />
+              <img src={gender==="male"? manAgeSvg:womanAgeSvg} alt="age" id="iconImg" />
             </button>
             <button
               className="icon"
