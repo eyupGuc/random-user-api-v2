@@ -38,7 +38,7 @@ const Card = () => {
   }, []);
   return (
     <main>
-      s
+      
       <div className="block bcg-orange">
         <img src={cwSvg} alt="cw" id="cw" />
       </div>
