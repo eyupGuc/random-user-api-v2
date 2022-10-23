@@ -1,22 +1,25 @@
-const Button=({getUser,setButtonClick,buttonClick})=>{
-  const fetchNewUser=(e)=>{
+const Button = ({ getUser, setButtonClick, buttonClick, addUser }) => {
+  const fetchNewUser = (e) => {
     // console.log("buton clicked")
-    getUser()
+    getUser();
     // console.log(e.target)
-    setButtonClick("true")
-    console.log(buttonClick)
- 
-  }
-    return(
-        <div className="btn-group">
-              <button className="btn" type="button" onClick={fetchNewUser}>
-                new user
-              </button>
-              <button className="btn" type="button">
-                add user
-              </button>
-            </div>
-    )
-}
+    setButtonClick("true");
+    // console.log(buttonClick);
+  };
+
+  const handleAddUser = () => {
+    addUser();
+  };
+  return (
+    <div className="btn-group">
+      <button className="btn" type="button" onClick={fetchNewUser}>
+        new user
+      </button>
+      <button className="btn" type="button" onClick={handleAddUser}>
+        add user
+      </button>
+    </div>
+  );
+};
 
 export default Button;

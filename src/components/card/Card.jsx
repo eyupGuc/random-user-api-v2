@@ -19,6 +19,8 @@ const Card = () => {
   const [userTitle, setUserTitle] = useState("");
   const [userValue, setUserValue] = useState("");
   const [buttonClick, setButtonClick] = useState(false);
+  const [addUserToTable,setAddUserToTable]=useState([]);
+  
 
   const getUser = () => {
     fetch(url)
@@ -26,12 +28,23 @@ const Card = () => {
       .then((data) => setUser(data.results[0]));
   };
 
+  const addUser=()=>{
+    console.log("ADDDDD userrrrr");
+    const newUser={
+      firstName:user?.name?.first
+    };
+    setAddUserToTable([...addUserToTable,newUser])
+  };
+
+ 
+
   console.log(user);
-  console.log(buttonClick);
+  // console.log(buttonClick);
   const { name, email, dob, location, picture, phone, gender, login } = user;
 
   useEffect(() => {
     getUser();
+    
   }, []);
   return (
     <main>
@@ -133,6 +146,7 @@ const Card = () => {
             getUser={getUser}
             setButtonClick={setButtonClick}
             buttonClick={buttonClick}
+            addUser={addUser}
           />
 
           <table className="table">
@@ -145,7 +159,9 @@ const Card = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="body-tr"></tr>
+              <tr className="body-tr">
+                
+              </tr>
             </tbody>
           </table>
         </div>
