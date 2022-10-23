@@ -1,8 +1,10 @@
-const Button=({getUser})=>{
+const Button=({getUser,setButtonClick,buttonClick})=>{
   const fetchNewUser=(e)=>{
     // console.log("buton clicked")
     getUser()
-    console.log(e.target)
+    // console.log(e.target)
+    setButtonClick("false")
+    console.log(buttonClick)
  
   }
     return(

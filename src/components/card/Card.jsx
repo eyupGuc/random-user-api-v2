@@ -18,7 +18,9 @@ const Card = () => {
   const [user, setUser] = useState("");
   const [userTitle, setUserTitle] = useState("");
   const [userValue, setUserValue] = useState("")  
-  ;
+  const[buttonClick,setButtonClick]=useState(false)
+ 
+  
 
   const getUser = () => {
     fetch(url)
@@ -33,6 +35,7 @@ const Card = () => {
 
   useEffect(() => {
     getUser();
+
   }, []);
   return (
     <main>
@@ -42,8 +45,8 @@ const Card = () => {
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-          <p className="user-title">My  {userTitle ? userTitle : "name"} is</p>
-          <p className="user-value">{userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p>
+      <p className="user-title">My  {userTitle ? userTitle : "name"} is</p>
+         <p className="user-value">{userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p> 
           <div className="values-list">
             <button
               className="icon"
@@ -73,7 +76,7 @@ const Card = () => {
               className="icon"
               data-label="age"
               onMouseOver={() => {setUserTitle("age")
-              setUserValue(dob.age);}}
+              setUserValue(dob?.age);}}
             >
               <img
                 src={gender === "female" ? womanAgeSvg : manAgeSvg}
@@ -115,7 +118,7 @@ const Card = () => {
               <img src={padlockSvg} alt="lock" id="iconImg" />
             </button>
           </div>
-          <Button getUser={getUser} />
+          <Button getUser={getUser} setButtonClick={setButtonClick} buttonClick={buttonClick} />
 
           <table className="table">
             <thead>
