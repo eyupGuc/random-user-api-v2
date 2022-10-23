@@ -17,10 +17,8 @@ const url = "https://randomuser.me/api/";
 const Card = () => {
   const [user, setUser] = useState("");
   const [userTitle, setUserTitle] = useState("");
-  const [userValue, setUserValue] = useState("")  
-  const[buttonClick,setButtonClick]=useState(false)
- 
-  
+  const [userValue, setUserValue] = useState("");
+  const [buttonClick, setButtonClick] = useState(false);
 
   const getUser = () => {
     fetch(url)
@@ -28,15 +26,12 @@ const Card = () => {
       .then((data) => setUser(data.results[0]));
   };
 
-
-
   console.log(user);
-  console.log(buttonClick)
-  const { name, email, dob, location, picture, phone, gender,login } = user;
+  console.log(buttonClick);
+  const { name, email, dob, location, picture, phone, gender, login } = user;
 
   useEffect(() => {
     getUser();
-
   }, []);
   return (
     <main>
@@ -46,15 +41,21 @@ const Card = () => {
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-      <p className="user-title">My  {userTitle ? userTitle : "name"} is</p>
-         <p className="user-value"> {userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p> 
+          <p className="user-title">My {userTitle ? userTitle : "name"} is</p>
+
+          <p className="user-value">
+            {" "}
+            {userValue
+              ? userValue
+              : name?.title + " " + name?.first + " " + name?.last}
+          </p>
           <div className="values-list">
             <button
               className="icon"
               data-label="name"
-              onMouseOver={()=>{
-                setUserTitle("name") 
-                setUserValue(name.title+ " " +name.first+ " " +name.last);
+              onMouseOver={() => {
+                setUserTitle("name");
+                setUserValue(name.title + " " + name.first + " " + name.last);
               }}
             >
               <img
@@ -67,7 +68,7 @@ const Card = () => {
               className="icon"
               data-label="email"
               onMouseOver={() => {
-                setUserTitle("email")
+                setUserTitle("email");
                 setUserValue(email);
               }}
             >
@@ -76,8 +77,10 @@ const Card = () => {
             <button
               className="icon"
               data-label="age"
-              onMouseOver={() => {setUserTitle("age")
-              setUserValue(dob?.age);}}
+              onMouseOver={() => {
+                setUserTitle("age");
+                setUserValue(dob?.age);
+              }}
             >
               <img
                 src={gender === "female" ? womanAgeSvg : manAgeSvg}
@@ -89,10 +92,9 @@ const Card = () => {
               className="icon"
               data-label="street"
               onMouseOver={() => {
-                setUserTitle("street")
+                setUserTitle("street");
                 setUserValue(location.state);
               }}
-            
             >
               <img src={mapSvg} alt="map" id="iconImg" />
             </button>
@@ -100,10 +102,9 @@ const Card = () => {
               className="icon"
               data-label="phone"
               onMouseOver={() => {
-                setUserTitle("phone")
-                setUserValue(phone)
-                
-              } }
+                setUserTitle("phone");
+                setUserValue(phone);
+              }}
             >
               <img src={phoneSvg} alt="phone" id="iconImg" />
             </button>
@@ -111,15 +112,18 @@ const Card = () => {
               className="icon"
               data-label="password"
               onMouseOver={() => {
-                setUserTitle("password")
+                setUserTitle("password");
                 setUserValue(login.password);
               }}
-            
             >
               <img src={padlockSvg} alt="lock" id="iconImg" />
             </button>
           </div>
-          <Button getUser={getUser} setButtonClick={setButtonClick} buttonClick={buttonClick} />
+          <Button
+            getUser={getUser}
+            setButtonClick={setButtonClick}
+            buttonClick={buttonClick}
+          />
 
           <table className="table">
             <thead>
