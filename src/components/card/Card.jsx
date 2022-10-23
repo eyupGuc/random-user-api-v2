@@ -31,6 +31,7 @@ const Card = () => {
 
 
   console.log(user);
+  console.log(buttonClick)
   const { name, email, dob, location, picture, phone, gender,login } = user;
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Card = () => {
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
       <p className="user-title">My  {userTitle ? userTitle : "name"} is</p>
-         <p className="user-value">{userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p> 
+         <p className="user-value"> {userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p> 
           <div className="values-list">
             <button
               className="icon"
