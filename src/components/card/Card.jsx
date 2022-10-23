@@ -41,11 +41,15 @@ const Card = () => {
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-          <p className="user-title">My {userTitle ? userTitle : "name"} is</p>
+          <p className="user-title">
+            My {buttonClick ? "name" : userTitle ? userTitle : "name"} is
+          </p>
 
           <p className="user-value">
             {" "}
-            {userValue
+            {buttonClick
+              ? name?.title + " " + name?.first + " " + name?.last
+              : userValue
               ? userValue
               : name?.title + " " + name?.first + " " + name?.last}
           </p>
@@ -56,6 +60,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("name");
                 setUserValue(name.title + " " + name.first + " " + name.last);
+                setButtonClick(false);
               }}
             >
               <img
@@ -70,6 +75,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("email");
                 setUserValue(email);
+                setButtonClick(false);
               }}
             >
               <img src={mailSvg} alt="mail" id="iconImg" />
@@ -80,6 +86,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("age");
                 setUserValue(dob?.age);
+                setButtonClick(false);
               }}
             >
               <img
@@ -94,6 +101,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("street");
                 setUserValue(location.state);
+                setButtonClick(false);
               }}
             >
               <img src={mapSvg} alt="map" id="iconImg" />
@@ -104,6 +112,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("phone");
                 setUserValue(phone);
+                setButtonClick(false);
               }}
             >
               <img src={phoneSvg} alt="phone" id="iconImg" />
@@ -114,6 +123,7 @@ const Card = () => {
               onMouseOver={() => {
                 setUserTitle("password");
                 setUserValue(login.password);
+                setButtonClick(false);
               }}
             >
               <img src={padlockSvg} alt="lock" id="iconImg" />
