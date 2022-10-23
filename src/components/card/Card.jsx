@@ -42,8 +42,8 @@ const Card = () => {
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-          <p className="user-title">My {userTitle} is</p>
-          <p className="user-value">{userValue}</p>
+          <p className="user-title">My  {userTitle ? userTitle : "name"} is</p>
+          <p className="user-value">{userValue ? userValue : (name?.title+ " " +name?.first+ " " +name?.last)}</p>
           <div className="values-list">
             <button
               className="icon"

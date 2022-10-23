@@ -1,7 +1,8 @@
 const Button=({getUser})=>{
-  const fetchNewUser=()=>{
+  const fetchNewUser=(e)=>{
     // console.log("buton clicked")
     getUser()
+    console.log(e.target)
  
   }
     return(
