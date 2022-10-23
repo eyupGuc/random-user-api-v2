@@ -3,7 +3,7 @@ const Button=({getUser,setButtonClick,buttonClick})=>{
     // console.log("buton clicked")
     getUser()
     // console.log(e.target)
-    setButtonClick("false")
+    setButtonClick("true")
     console.log(buttonClick)
  
   }
