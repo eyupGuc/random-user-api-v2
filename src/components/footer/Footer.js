@@ -11,14 +11,14 @@ const Footer = () => {
         rel="noopener noreferrer"
         style={{ textDecoration: "none" }}
       >
-        <code className="brand">{"<Clarusway/> "}</code>
+        <code className="brand">{"<Eyüp/> "}</code>
       </a>
       <img
         src={designSvg}
         alt="design"
         style={{ width: "40px", margin: "0  25px 0 10px" }}
       />
-      <span>design</span>
+      <span>design by e-Guc</span>
     </div>
   );
 };

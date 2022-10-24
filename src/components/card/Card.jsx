@@ -21,7 +21,7 @@ const Card = () => {
   const [userValue, setUserValue] = useState("");
   const [buttonClick, setButtonClick] = useState(false);
   const [addUserInfo, setAddUserInfo] = useState([]);
-  const[userControl,setUserControl]=useState(false)
+  const [userControl, setUserControl] = useState(false);
 
   const [data, setData] = useState([]);
 
@@ -38,7 +38,7 @@ const Card = () => {
     } catch (e) {
       console.log(e);
     }
-    setUserControl(false)
+    setUserControl(true);
   };
 
   const addUser = () => {
@@ -48,12 +48,12 @@ const Card = () => {
       phone: user.phone,
       age: user.dob.age,
     };
-    setAddUserInfo([...addUserInfo, newUser]);
-    setUserControl(true)
+    userControl && setAddUserInfo([...addUserInfo, newUser]);
+    setUserControl(false);
   };
 
   // console.log(user);
-  console.log(data.results);
+  // console.log(data.results);
   // console.log(buttonClick);
   const { name, email, dob, location, picture, phone, gender, login } = user;
 
@@ -173,13 +173,11 @@ const Card = () => {
               </tr>
             </thead>
             <tbody>
-              {addUserInfo === []? (
+              {addUserInfo === [] ? (
                 ""
               ) : (
                 <>
-                  {" "}
                   {addUserInfo.map((item, idx) => (
-                  
                     <tr className="body-tr" key={idx}>
                       <td className="td">{item.firstName}</td>
                       <td className="td">{item.email}</td>
