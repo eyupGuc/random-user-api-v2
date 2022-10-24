@@ -48,7 +48,9 @@ const Card = () => {
       phone: user.phone,
       age: user.dob.age,
     };
-    userControl && setAddUserInfo([...addUserInfo, newUser]);
+    userControl
+      ? setAddUserInfo([...addUserInfo, newUser])
+      : alert(`please try adding a different user`);
     setUserControl(false);
   };
 
