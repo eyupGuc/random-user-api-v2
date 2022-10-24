@@ -10,6 +10,7 @@ import cwSvg from "../../assets/cw.svg";
 import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
 import Button from "../button/Button";
+import axios from "axios";
 // const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
 const url = "https://randomuser.me/api/";
@@ -19,32 +20,45 @@ const Card = () => {
   const [userTitle, setUserTitle] = useState("");
   const [userValue, setUserValue] = useState("");
   const [buttonClick, setButtonClick] = useState(false);
-  const [addUserToTable,setAddUserToTable]=useState([]);
-  
+  const [addUserInfo, setAddUserInfo] = useState([]);
+  const[userControl,setUserControl]=useState(false)
 
-  const getUser = () => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setUser(data.results[0]));
+  const [data, setData] = useState([]);
+
+  // const getUser = () => {
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setUser(data.results[0]));
+  // };
+  const getUser = async () => {
+    try {
+      const { data } = await axios(url);
+      setUser(data.results[0]);
+      setData(data);
+    } catch (e) {
+      console.log(e);
+    }
+    setUserControl(false)
   };
 
-  const addUser=()=>{
-    console.log("ADDDDD userrrrr");
-    const newUser={
-      firstName:user?.name?.first
+  const addUser = () => {
+    const newUser = {
+      firstName: user.name.first,
+      email: user.email,
+      phone: user.phone,
+      age: user.dob.age,
     };
-    setAddUserToTable([...addUserToTable,newUser])
+    setAddUserInfo([...addUserInfo, newUser]);
+    setUserControl(true)
   };
 
- 
-
-  console.log(user);
+  // console.log(user);
+  console.log(data.results);
   // console.log(buttonClick);
   const { name, email, dob, location, picture, phone, gender, login } = user;
 
   useEffect(() => {
     getUser();
-    
   }, []);
   return (
     <main>
@@ -159,9 +173,22 @@ const Card = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="body-tr">
-                
-              </tr>
+              {addUserInfo === []? (
+                ""
+              ) : (
+                <>
+                  {" "}
+                  {addUserInfo.map((item, idx) => (
+                  
+                    <tr className="body-tr" key={idx}>
+                      <td className="td">{item.firstName}</td>
+                      <td className="td">{item.email}</td>
+                      <td className="td">{item.phone}</td>
+                      <td className="td">{item.age}</td>
+                    </tr>
+                  ))}
+                </>
+              )}
             </tbody>
           </table>
         </div>
