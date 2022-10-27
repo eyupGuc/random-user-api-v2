@@ -75,7 +75,7 @@ const Card = () => {
           </p>
 
           <p className="user-value">
-           
+            
             {buttonClick
               ? name?.title + " " + name?.first + " " + name?.last
               : userValue
