@@ -65,7 +65,7 @@ const Card = () => {
   return (
     <main>
       <div className="block bcg-orange">
-        <img src={cwSvg} alt="cw" id="cw" />
+       
       </div>
       <div className="block">
         <div className="container">
